@@ -1,0 +1,43 @@
+<h2>Por region: <small>{{regionActiva |titlecase}} </small></h2>
+
+<hr />
+
+<h5>Seleccione una region</h5>
+<div class="row">
+  <div class="col">
+   <!--  [class.btn-primary]="item === regionActiva" -->
+   <!-- [ngClass]="{'btn-primary': item === regionActiva,
+  'btn-outline-primary': item !== regionActiva}" -->
+  <!-- [class]="(item === regionActiva) ? 'btn btn-primary' : 'btn btn-outline-primary'" -->
+    <button *ngFor="let item of regiones"
+    class="mx-2"
+    [class]="getClass(item)"
+    (click)="activarRegion(item)">
+      {{item |titlecase}}
+    </button>
+  </div>
+</div>
+
+<div class="row" *ngIf="paises.length">
+  <div class="col">
+    <app-pais-tabla
+    [paises]="paises"></app-pais-tabla>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col">
+    <app-pais-input
+    (onEnter)="buscar($event)"
+    (onDebounce)="sugerencia($event)"
+    placeholder="Buscar Region..."></app-pais-input>
+  </div>
+</div>
+
+<hr>
+<div class="alert alert-danger" *ngIf="hayError">
+  No se encontro nada con el termino...
+</div>
+
+
+ -->
